@@ -7,9 +7,10 @@ module.exports = {
   darkMode: 'class', // or 'media' or 'class'
   theme: {
     fontFamily: {
-      'fell': ['Fell'],
       'duerergotisch': ['Duerer Gotisch'],
+      'fell': ['Fell'],
       'gregorian': ['Gregorian'],
+      'ruritania':['Ruritania']
     },
     extend: {},
   },

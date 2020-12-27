@@ -25,8 +25,9 @@
         <div id="font-family-group" class="lg:mx-1">
           <label class="block font-fell" for="font-family">Font</label>
           <select id="font-family" class="btn-dark font-fell bg-white" @change="onFontSelected" v-model="selectedFont">
-            <option value="gregorian" class="btn-dark text-4xl font-gregorian">Gregorian</option>
-            <option value="duerergotisch" class="btn-dark text-4xl font-duerergotisch">Duerer Gotisch</option>
+            <option value="gregorian" class="text-4xl font-gregorian">Gregorian</option>
+            <option value="duerergotisch" class="text-4xl font-duerergotisch">Duerer Gotisch</option>
+            <option value="ruritania" class="text-2xl font-ruritania">Ruritania</option>
           </select>
         </div>
         <div id="font-size-group" class="w-52 lg:mx-1">

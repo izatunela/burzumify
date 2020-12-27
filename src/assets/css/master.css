@@ -18,6 +18,11 @@
         font-weight: 600;
         src: url(../font/gregorian.ttf) format("truetype");
     }
+    @font-face {
+        font-family: Ruritania;
+        font-weight: 600;
+        src: url(../font/Ruritania.ttf) format("truetype");
+    }
 
     input[type='range']::-webkit-slider-runnable-track{
         -webkit-appearance: none;

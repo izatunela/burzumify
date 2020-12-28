@@ -42,6 +42,9 @@
         top:-7px;
         position: relative;
     }
+    input#image-darkness{
+        direction:rtl;
+    }
 
 }
 @layer components {

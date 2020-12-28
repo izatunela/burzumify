@@ -104,7 +104,7 @@
       <div
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
-        <div id="image-grayscale" class="w-52">
+        <div id="image-grayscale-group" class="w-52">
           <legend class="font-fell">Grayscale</legend>
           <label
             class="pr-2 font-fell cursor-pointer"
@@ -135,7 +135,22 @@
             id="image-color-dark"
           />
         </div>
-        <div class="w-52"></div>
+        <div id="image-darkness-group" class="w-52">
+          <label class="block font-fell" for="image-darkness">Darkness</label>
+          <input
+            @input="onImageDarknessChange"
+            v-model="canvasObj.imageDarkness"
+            class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
+            type="range"
+            name="image-darkness"
+            id="image-darkness"
+            min="0"
+            max="100"
+          />
+          <p class="text-center font-fell text-2xl -mt-2">
+            {{ Math.abs(canvasObj.imageDarkness - 100) }}<small>%</small>
+          </p>
+        </div>
       </div>
     </div>
     <div v-show="show" id="preview-image">
@@ -160,6 +175,7 @@ export default {
         ctx: null,
         image: null,
         imageColoring: "original",
+        imageDarkness: 100,
         title: "B U R Z U M",
         fontFamily: "Gregorian",
         fontSize: 50,
@@ -205,6 +221,10 @@ export default {
       this.canvasObj.imageColoring = e.target.value;
       this.toCanvas(this.canvasObj);
     },
+    onImageDarknessChange(e){
+      this.canvasObj.imageDarkness = e.target.value;
+      this.toCanvas(this.canvasObj);
+    },
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
@@ -222,6 +242,7 @@ export default {
         canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
         canvasObj.ctx.fillStyle = canvasObj.textColor;
         canvasObj.ctx.textBaseline = "top";
+        canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;
         canvasObj.ctx.drawImage(img, 0, 0);
         document.fonts.ready.then(function () {
           canvasObj.ctx.fillText(canvasObj.title, 20, 20);

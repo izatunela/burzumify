@@ -62,7 +62,7 @@
             type="range"
             name="font-size"
             id="font-size"
-            min="50"
+            min="10"
             max="300"
           />
           <p class="text-center font-fell text-2xl -mt-2">
@@ -178,7 +178,7 @@ export default {
         imageDarkness: 100,
         title: "B U R Z U M",
         fontFamily: "Gregorian",
-        fontSize: 50,
+        fontSize: 42,
         textColor: "dark",
         width: null,
         height: null,

@@ -23,6 +23,11 @@
         font-weight: 600;
         src: url(../font/Ruritania.ttf) format("truetype");
     }
+    @font-face {
+        font-family: Papyrus;
+        font-weight: 600;
+        src: url(../font/Papyrus.ttf) format("truetype");
+    }
 
     input[type='range']::-webkit-slider-runnable-track{
         -webkit-appearance: none;

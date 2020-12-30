@@ -39,14 +39,20 @@
             @change="onFontSelected"
             v-model="selectedFont"
           >
-            <option value="gregorian" class="text-4xl font-gregorian">
-              Gregorian
-            </option>
             <option value="duerergotisch" class="text-4xl font-duerergotisch">
               Duerer Gotisch
             </option>
+            <option value="gregorian" class="text-4xl font-gregorian">
+              Gregorian
+            </option>
+            <option value="papyrus" class="text-2xl font-papyrus">
+              Papyrus
+            </option>
             <option value="ruritania" class="text-2xl font-ruritania">
               Ruritania
+            </option>
+            <option value="times-new-roman" class="text-2xl font-times-new-roman">
+              Times New Roman
             </option>
           </select>
         </div>

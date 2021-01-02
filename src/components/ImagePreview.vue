@@ -45,6 +45,9 @@
             <option value="gregorian" class="text-4xl font-gregorian">
               Gregorian
             </option>
+            <option value="old-london" class="text-4xl font-old-london">
+              Old London
+            </option>
             <option value="papyrus" class="text-2xl font-papyrus">
               Papyrus
             </option>

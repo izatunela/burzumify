@@ -10,8 +10,9 @@ module.exports = {
       'duerergotisch': ['Duerer Gotisch'],
       'fell': ['Fell'],
       'gregorian': ['Gregorian'],
-      'ruritania':['Ruritania'],
+      'old-london':['Old London'],
       'papyrus':['Papyrus'],
+      'ruritania':['Ruritania'],
       'times-new-roman':['Times New Roman']
     },
     extend: {},

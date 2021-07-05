@@ -242,7 +242,10 @@ export default {
         return new Promise((resolve) => {
           let img = new Image();
           img.src = src;
-          img.onload = () => resolve(img);
+          img.onload = () => {
+            resolve(img);
+            URL.revokeObjectURL(this.src)
+          }
         });
       }
       addImageProcess(canvasObj.image).then((img) => {

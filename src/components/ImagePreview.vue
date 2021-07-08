@@ -234,21 +234,21 @@ export default {
       this.canvasObj.imageDarkness = e.target.value;
       this.toCanvas(this.canvasObj);
     },
+    addImageProcess(src) {
+      return new Promise((resolve) => {
+        let img = new Image();
+        img.src = src;
+        img.onload = () => {
+          resolve(img);
+          URL.revokeObjectURL(this.src)
+        }
+      });
+    },
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
 
-      function addImageProcess(src) {
-        return new Promise((resolve) => {
-          let img = new Image();
-          img.src = src;
-          img.onload = () => {
-            resolve(img);
-            URL.revokeObjectURL(this.src)
-          }
-        });
-      }
-      addImageProcess(canvasObj.image).then((img) => {
+      this.addImageProcess(canvasObj.image).then((img) => {
         canvasObj.canvas.width = img.width;
         canvasObj.canvas.height = img.height;
         canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;

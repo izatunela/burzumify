@@ -257,6 +257,11 @@ export default {
     setImageDarkness(canvasObj){
       canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;
     },
+    setTitle(canvasObj){
+      document.fonts.ready.then(function () {
+        canvasObj.ctx.fillText(canvasObj.title, 20, 20);
+      });
+    },
 
     toCanvas(canvasObj) {
       var img = new Image();
@@ -268,9 +273,8 @@ export default {
         this.setFont(canvasObj);
         this.setTextColor(canvasObj);
         this.setImageDarkness(canvasObj);
-        document.fonts.ready.then(function () {
-          canvasObj.ctx.fillText(canvasObj.title, 20, 20);
-        });
+        this.setTitle(canvasObj);
+
         canvasObj.ctx.drawImage(img, 0, 0);
         if (canvasObj.imageColoring === "image-dark") {
           const imageData = canvasObj.ctx.getImageData(

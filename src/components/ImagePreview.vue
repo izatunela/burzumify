@@ -244,13 +244,16 @@ export default {
         }
       });
     },
+    setImageSize(canvasObj,img){
+      canvasObj.canvas.width = img.width;
+      canvasObj.canvas.height = img.height;
+    },
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
 
       this.addImageProcess(canvasObj.image).then((img) => {
-        canvasObj.canvas.width = img.width;
-        canvasObj.canvas.height = img.height;
+        this.setImageSize(canvasObj,img);
         canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
         canvasObj.ctx.fillStyle = canvasObj.textColor;
         canvasObj.ctx.textBaseline = "top";

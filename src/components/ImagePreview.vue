@@ -248,13 +248,16 @@ export default {
       canvasObj.canvas.width = img.width;
       canvasObj.canvas.height = img.height;
     },
+    setFont(canvasObj){
+      canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
+    },
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
 
       this.addImageProcess(canvasObj.image).then((img) => {
         this.setImageSize(canvasObj,img);
-        canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
+        this.setFont(canvasObj);
         canvasObj.ctx.fillStyle = canvasObj.textColor;
         canvasObj.ctx.textBaseline = "top";
         canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;

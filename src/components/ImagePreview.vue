@@ -251,6 +251,10 @@ export default {
     setFont(canvasObj){
       canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
     },
+    setTextColor(canvasObj){
+      canvasObj.ctx.fillStyle = canvasObj.textColor;
+    },
+
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
@@ -258,7 +262,7 @@ export default {
       this.addImageProcess(canvasObj.image).then((img) => {
         this.setImageSize(canvasObj,img);
         this.setFont(canvasObj);
-        canvasObj.ctx.fillStyle = canvasObj.textColor;
+        this.setTextColor(canvasObj);
         canvasObj.ctx.textBaseline = "top";
         canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;
         canvasObj.ctx.drawImage(img, 0, 0);

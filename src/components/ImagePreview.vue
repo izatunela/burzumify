@@ -262,7 +262,23 @@ export default {
         canvasObj.ctx.fillText(canvasObj.title, 20, 20);
       });
     },
+    setGrayscale(canvasObj){
+      const imageData = canvasObj.ctx.getImageData(
+          0,
+          0,
+          canvasObj.canvas.width,
+          canvasObj.canvas.height
+      );
+      const data = imageData.data;
+      for (var i = 0; i < data.length; i += 4) {
+        var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+        data[i] = avg;
+        data[i + 1] = avg;
+        data[i + 2] = avg;
+      }
+      canvasObj.ctx.putImageData(imageData, 0, 0);
 
+    },
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
@@ -274,23 +290,9 @@ export default {
         this.setTextColor(canvasObj);
         this.setImageDarkness(canvasObj);
         this.setTitle(canvasObj);
-
         canvasObj.ctx.drawImage(img, 0, 0);
         if (canvasObj.imageColoring === "image-dark") {
-          const imageData = canvasObj.ctx.getImageData(
-            0,
-            0,
-            canvasObj.canvas.width,
-            canvasObj.canvas.height
-          );
-          const data = imageData.data;
-          for (var i = 0; i < data.length; i += 4) {
-            var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-            data[i] = avg;
-            data[i + 1] = avg;
-            data[i + 2] = avg;
-          }
-          canvasObj.ctx.putImageData(imageData, 0, 0);
+          this.setGrayscale(canvasObj);
         }
       });
     },

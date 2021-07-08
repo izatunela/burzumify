@@ -254,6 +254,9 @@ export default {
     setTextColor(canvasObj){
       canvasObj.ctx.fillStyle = canvasObj.textColor;
     },
+    setImageDarkness(canvasObj){
+      canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;
+    },
 
     toCanvas(canvasObj) {
       var img = new Image();
@@ -261,14 +264,14 @@ export default {
 
       this.addImageProcess(canvasObj.image).then((img) => {
         this.setImageSize(canvasObj,img);
+        canvasObj.ctx.textBaseline = "top"; //TODO Add changing text position
         this.setFont(canvasObj);
         this.setTextColor(canvasObj);
-        canvasObj.ctx.textBaseline = "top";
-        canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;
-        canvasObj.ctx.drawImage(img, 0, 0);
+        this.setImageDarkness(canvasObj);
         document.fonts.ready.then(function () {
           canvasObj.ctx.fillText(canvasObj.title, 20, 20);
         });
+        canvasObj.ctx.drawImage(img, 0, 0);
         if (canvasObj.imageColoring === "image-dark") {
           const imageData = canvasObj.ctx.getImageData(
             0,

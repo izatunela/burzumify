@@ -297,7 +297,6 @@ export default {
       });
     },
     //TODO Add option to clear image
-    //TODO Add efect on Burzumify button
     burzumify() {
       var finalImg = new Image();
       finalImg.crossOrigin = "anonymous";

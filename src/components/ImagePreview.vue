@@ -164,7 +164,7 @@
     </div>
     <div v-show="show" id="preview-image">
       <div id="canvas-wrap" class="mx-auto p-0.5"></div>
-      <button class="block mx-auto btn-dark font-fell" @click="burzumify">
+      <button class="block mx-auto btn-dark font-fell btn-burzumify-hover " @click="burzumify">
         &#9651; Burzumify &#9661;
       </button>
     </div>

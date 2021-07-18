@@ -162,6 +162,37 @@
           </p>
         </div>
       </div>
+      <div
+          class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
+      >
+        <div id="" class="w-52">
+        <div class="block font-fell">Title position</div>
+          <label class="block font-fell" for="x-title-position">X-Axis</label>
+          <input
+              @input="onXAxisTitlePositionChange"
+              v-model="canvasObj.xAxisPosition"
+              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
+              type="range"
+              name="x-title-position"
+              id="x-title-position"
+              min="0"
+              :max="canvasObj.imageWidth"
+          />
+<!--        </div>-->
+<!--        <div id="" class="w-52">-->
+          <label class="block font-fell" for="y-title-position">Y-Axis</label>
+          <input
+              @input="onYAxisTitlePositionChange"
+              v-model="canvasObj.yAxisPosition"
+              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
+              type="range"
+              name="y-title-position"
+              id="y-title-position"
+              min="0"
+              :max="canvasObj.imageHeight"
+          />
+        </div>
+      </div>
     </div>
     <div v-show="show" id="preview-image">
       <div id="canvas-wrap" class="mx-auto p-0.5"></div>
@@ -190,8 +221,10 @@ export default {
         fontFamily: "Gregorian",
         fontSize: 42,
         textColor: "dark",
-        width: null,
-        height: null,
+        imageWidth: null,
+        imageHeight: null,
+        xAxisPosition:20,
+        yAxisPosition:20,
       },
     };
   },
@@ -235,19 +268,17 @@ export default {
       this.canvasObj.imageDarkness = e.target.value;
       this.toCanvas(this.canvasObj);
     },
-    addImageProcess(src) {
-      return new Promise((resolve) => {
-        let img = new Image();
-        img.src = src;
-        img.onload = () => {
-          resolve(img);
-          URL.revokeObjectURL(this.src)
-        }
-      });
+    onXAxisTitlePositionChange(e){
+      this.canvasObj.xAxisPosition = e.target.value;
+      this.toCanvas(this.canvasObj);
     },
-    setImageSize(canvasObj,img){
-      canvasObj.canvas.width = img.width;
-      canvasObj.canvas.height = img.height;
+    onYAxisTitlePositionChange(e){
+      this.canvasObj.yAxisPosition = e.target.value;
+      this.toCanvas(this.canvasObj);
+    },
+    setImageSize(canvasObj){
+      canvasObj.canvas.width = canvasObj.imageWidth;
+      canvasObj.canvas.height = canvasObj.imageHeight;
     },
     setFont(canvasObj){
       canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
@@ -260,7 +291,11 @@ export default {
     },
     setTitle(canvasObj){
       document.fonts.ready.then(function () {
-        canvasObj.ctx.fillText(canvasObj.title, 20, 20);
+        canvasObj.ctx.fillText(
+            canvasObj.title,
+            canvasObj.xAxisPosition,
+            canvasObj.yAxisPosition
+        );
       });
     },
     setGrayscale(canvasObj){
@@ -280,13 +315,25 @@ export default {
       canvasObj.ctx.putImageData(imageData, 0, 0);
 
     },
+    addImageProcess(src) {
+      return new Promise((resolve) => {
+        let img = new Image();
+        img.src = src;
+        img.onload = () => {
+          resolve(img);
+          URL.revokeObjectURL(this.src)
+        }
+      });
+    },
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
 
       this.addImageProcess(canvasObj.image).then((img) => {
-        this.setImageSize(canvasObj,img);
-        canvasObj.ctx.textBaseline = "top"; //TODO Add changing text position
+        this.canvasObj.imageWidth = img.width
+        this.canvasObj.imageHeight = img.height
+        this.setImageSize(canvasObj);
+        canvasObj.ctx.textBaseline = "top";//TODO vidi da li ovo moze negde da se skloni
         this.setFont(canvasObj);
         this.setTextColor(canvasObj);
         this.setImageDarkness(canvasObj);
@@ -297,7 +344,6 @@ export default {
         }
       });
     },
-    //TODO Add option to clear image
     burzumify() {
       var finalImg = new Image();
       finalImg.crossOrigin = "anonymous";

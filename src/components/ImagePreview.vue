@@ -10,7 +10,8 @@
       @click="$refs.imgInput.click()"
       class="block mt-8 btn-dark font-fell"
     >
-      Choose image
+      <span v-show="!show">Choose image</span>
+      <span v-show="show">Choose new image</span>
     </button>
     <div
       v-show="show"

@@ -65,7 +65,7 @@
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
         <div id="font-size-group" class="w-52">
-          <label class="block font-fell" for="font-size">Font size</label>
+          <label class="block font-fell" for="font-size">Title size</label>
           <input
             @input="onFontSizeChange"
             class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
@@ -81,7 +81,7 @@
         </div>
         <div id="font-color-group" class="w-52">
           <fieldset>
-            <legend class="font-fell">Font color</legend>
+            <legend class="font-fell">Title color</legend>
             <label class="pr-2 font-fell cursor-pointer" for="font-color-dark"
               >Dark</label
             >

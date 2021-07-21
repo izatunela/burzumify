@@ -21,17 +21,18 @@
       <div
         class="options-row sm:w-full self-center flex flex-col sm:flex-row justify-evenly"
       >
-        <div id="title-group" class="w-52">
-          <label class="block font-fell" for="title">Title</label>
-          <input
-            id="title"
-            v-model="canvasObj.title"
-            @input="inputTitle"
-            type="text"
-            class="font-fell p-2 btn-dark"
-            placeholder="Enter title"
-          />
-        </div>
+<!--        <div id="title-group" class="w-52">-->
+<!--          <label class="block font-fell" for="title">Title</label>-->
+<!--          <input-->
+<!--            id="title"-->
+<!--            v-model="canvasObj.title"-->
+<!--            @input="inputTitle"-->
+<!--            type="text"-->
+<!--            class="font-fell p-2 btn-dark"-->
+<!--            placeholder="Enter title"-->
+<!--          />-->
+<!--        </div>-->
+        <title-input v-model:title="canvasObj.title" @input="inputTitle"></title-input>
         <div id="font-family-group" class="w-52">
           <label class="block font-fell" for="font-family">Font</label>
           <select
@@ -204,6 +205,8 @@
 </template>
 
 <script>
+import TitleInput from "./TitleInput.vue";
+
 export default {
   name: "ImagePreview",
   data() {
@@ -227,6 +230,9 @@ export default {
         yAxisPosition:20,
       },
     };
+  },
+  components: {
+    TitleInput
   },
   methods: {
     onImgSelected(e) {

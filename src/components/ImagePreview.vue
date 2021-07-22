@@ -33,34 +33,35 @@
 <!--          />-->
 <!--        </div>-->
         <title-input v-model:title="canvasObj.title" @input="inputTitle"></title-input>
-        <div id="font-family-group" class="w-52">
-          <label class="block font-fell" for="font-family">Font</label>
-          <select
-            id="font-family"
-            class="btn-dark font-fell bg-white"
-            @change="onFontSelected"
-            v-model="selectedFont"
-          >
-            <option value="duerergotisch" class="text-4xl font-duerergotisch">
-              Duerer Gotisch
-            </option>
-            <option value="gregorian" class="text-4xl font-gregorian">
-              Gregorian
-            </option>
-            <option value="old-london" class="text-4xl font-old-london">
-              Old London
-            </option>
-            <option value="papyrus" class="text-2xl font-papyrus">
-              Papyrus
-            </option>
-            <option value="ruritania" class="text-2xl font-ruritania">
-              Ruritania
-            </option>
-            <option value="times-new-roman" class="text-2xl font-times-new-roman">
-              Times New Roman
-            </option>
-          </select>
-        </div>
+<!--        <div id="font-family-group" class="w-52">-->
+<!--          <label class="block font-fell" for="font-family">Font</label>-->
+<!--          <select-->
+<!--            id="font-family"-->
+<!--            class="btn-dark font-fell bg-white"-->
+<!--            @change="onFontSelected"-->
+<!--            v-model="selectedFont"-->
+<!--          >-->
+<!--            <option value="duerergotisch" class="text-4xl font-duerergotisch">-->
+<!--              Duerer Gotisch-->
+<!--            </option>-->
+<!--            <option value="gregorian" class="text-4xl font-gregorian">-->
+<!--              Gregorian-->
+<!--            </option>-->
+<!--            <option value="old-london" class="text-4xl font-old-london">-->
+<!--              Old London-->
+<!--            </option>-->
+<!--            <option value="papyrus" class="text-2xl font-papyrus">-->
+<!--              Papyrus-->
+<!--            </option>-->
+<!--            <option value="ruritania" class="text-2xl font-ruritania">-->
+<!--              Ruritania-->
+<!--            </option>-->
+<!--            <option value="times-new-roman" class="text-2xl font-times-new-roman">-->
+<!--              Times New Roman-->
+<!--            </option>-->
+<!--          </select>-->
+<!--        </div>-->
+        <font-family v-model:fontfamily="selectedFont" @change="onFontSelected"></font-family>
       </div>
       <div
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
@@ -206,6 +207,7 @@
 
 <script>
 import TitleInput from "./TitleInput.vue";
+import FontFamily from "@/components/FontFamily";
 
 export default {
   name: "ImagePreview",
@@ -232,7 +234,8 @@ export default {
     };
   },
   components: {
-    TitleInput
+    TitleInput,
+    FontFamily
   },
   methods: {
     onImgSelected(e) {

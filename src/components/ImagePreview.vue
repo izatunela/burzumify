@@ -171,33 +171,41 @@
       <div
           class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
-        <div id="" class="w-52">
-        <div class="block font-fell">Title position</div>
-          <label class="block font-fell" for="x-title-position">X-Axis</label>
-          <input
-              @input="onXAxisTitlePositionChange"
-              v-model="canvasObj.xAxisPosition"
-              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
-              type="range"
-              name="x-title-position"
-              id="x-title-position"
-              min="0"
-              :max="canvasObj.imageWidth"
-          />
-<!--        </div>-->
 <!--        <div id="" class="w-52">-->
-          <label class="block font-fell" for="y-title-position">Y-Axis</label>
-          <input
-              @input="onYAxisTitlePositionChange"
-              v-model="canvasObj.yAxisPosition"
-              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
-              type="range"
-              name="y-title-position"
-              id="y-title-position"
-              min="0"
-              :max="canvasObj.imageHeight"
-          />
-        </div>
+<!--        <div class="block font-fell">Title position</div>-->
+<!--          <label class="block font-fell" for="x-title-position">X-Axis</label>-->
+<!--          <input-->
+<!--              @input="onXAxisTitlePositionChange"-->
+<!--              v-model="canvasObj.xAxisPosition"-->
+<!--              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
+<!--              type="range"-->
+<!--              name="x-title-position"-->
+<!--              id="x-title-position"-->
+<!--              min="0"-->
+<!--              :max="canvasObj.imageWidth"-->
+<!--          />-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        <div id="" class="w-52">&ndash;&gt;-->
+<!--          <label class="block font-fell" for="y-title-position">Y-Axis</label>-->
+<!--          <input-->
+<!--              @input="onYAxisTitlePositionChange"-->
+<!--              v-model="canvasObj.yAxisPosition"-->
+<!--              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
+<!--              type="range"-->
+<!--              name="y-title-position"-->
+<!--              id="y-title-position"-->
+<!--              min="0"-->
+<!--              :max="canvasObj.imageHeight"-->
+<!--          />-->
+<!--        </div>-->
+        <title-position
+          v-model:xPos="canvasObj.xAxisPosition"
+          v-model:yPos="canvasObj.yAxisPosition"
+          v-model:imgWidth="canvasObj.imageWidth"
+          v-model:imgHeight="canvasObj.imageHeight"
+          @update:xPos="onXAxisTitlePositionChange"
+          @update:yPos="onYAxisTitlePositionChange"
+        ></title-position>
       </div>
     </div>
     <div v-show="show" id="preview-image">
@@ -216,6 +224,7 @@ import TitleSize from "@/components/TitleSize";
 import TitleColor from "@/components/TitleColor";
 import ImageGrayscale from "@/components/ImageGrayscale";
 import ImageDarkness from "@/components/ImageDarkness";
+import TitlePosition from "@/components/TitlePosition";
 
 export default {
   name: "ImagePreview",
@@ -236,8 +245,8 @@ export default {
         textColor: "dark",
         imageWidth: null,
         imageHeight: null,
-        xAxisPosition:20,
-        yAxisPosition:20,
+        xAxisPosition:"20",
+        yAxisPosition:"20",
       },
     };
   },
@@ -247,7 +256,8 @@ export default {
     TitleSize,
     TitleColor,
     ImageGrayscale,
-    ImageDarkness
+    ImageDarkness,
+    TitlePosition
   },
   methods: {
     onImgSelected(e) {
@@ -290,12 +300,12 @@ export default {
       // this.canvasObj.imageDarkness = e.target.value;
       this.toCanvas(this.canvasObj);
     },
-    onXAxisTitlePositionChange(e){
-      this.canvasObj.xAxisPosition = e.target.value;
+    onXAxisTitlePositionChange(){
+      // this.canvasObj.xAxisPosition = e.target.value;
       this.toCanvas(this.canvasObj);
     },
-    onYAxisTitlePositionChange(e){
-      this.canvasObj.yAxisPosition = e.target.value;
+    onYAxisTitlePositionChange(){
+      // this.canvasObj.yAxisPosition = e.target.value;
       this.toCanvas(this.canvasObj);
     },
     setImageSize(canvasObj){

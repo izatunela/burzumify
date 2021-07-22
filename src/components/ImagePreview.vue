@@ -150,22 +150,23 @@
 <!--          />-->
 <!--        </div>-->
         <image-grayscale v-model:grayscale="canvasObj.imageColoring" @input="onImageColoringChange"></image-grayscale>
-        <div id="image-darkness-group" class="w-52">
-          <label class="block font-fell" for="image-darkness">Darkness</label>
-          <input
-            @input="onImageDarknessChange"
-            v-model="canvasObj.imageDarkness"
-            class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
-            type="range"
-            name="image-darkness"
-            id="image-darkness"
-            min="0"
-            max="100"
-          />
-          <p class="text-center font-fell text-2xl -mt-2">
-            {{ Math.abs(canvasObj.imageDarkness - 100) }}<small>%</small>
-          </p>
-        </div>
+<!--        <div id="image-darkness-group" class="w-52">-->
+<!--          <label class="block font-fell" for="image-darkness">Darkness</label>-->
+<!--          <input-->
+<!--            @input="onImageDarknessChange"-->
+<!--            v-model="canvasObj.imageDarkness"-->
+<!--            class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
+<!--            type="range"-->
+<!--            name="image-darkness"-->
+<!--            id="image-darkness"-->
+<!--            min="0"-->
+<!--            max="100"-->
+<!--          />-->
+<!--          <p class="text-center font-fell text-2xl -mt-2">-->
+<!--            {{ Math.abs(canvasObj.imageDarkness - 100) }}<small>%</small>-->
+<!--          </p>-->
+<!--        </div>-->
+        <image-darkness v-model:darkness="canvasObj.imageDarkness" @input="onImageDarknessChange"></image-darkness>
       </div>
       <div
           class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
@@ -214,6 +215,7 @@ import FontFamily from "@/components/FontFamily";
 import TitleSize from "@/components/TitleSize";
 import TitleColor from "@/components/TitleColor";
 import ImageGrayscale from "@/components/ImageGrayscale";
+import ImageDarkness from "@/components/ImageDarkness";
 
 export default {
   name: "ImagePreview",
@@ -227,10 +229,10 @@ export default {
         ctx: null,
         image: null,
         imageColoring: "original",
-        imageDarkness: 100,
+        imageDarkness: "100",
         title: "B U R Z U M",
         fontFamily: "Gregorian",
-        fontSize: '42',
+        fontSize: "42",
         textColor: "dark",
         imageWidth: null,
         imageHeight: null,
@@ -244,7 +246,8 @@ export default {
     FontFamily,
     TitleSize,
     TitleColor,
-    ImageGrayscale
+    ImageGrayscale,
+    ImageDarkness
   },
   methods: {
     onImgSelected(e) {
@@ -283,8 +286,8 @@ export default {
       // this.canvasObj.imageColoring = e.target.value;
       this.toCanvas(this.canvasObj);
     },
-    onImageDarknessChange(e){
-      this.canvasObj.imageDarkness = e.target.value;
+    onImageDarknessChange(){
+      // this.canvasObj.imageDarkness = e.target.value;
       this.toCanvas(this.canvasObj);
     },
     onXAxisTitlePositionChange(e){

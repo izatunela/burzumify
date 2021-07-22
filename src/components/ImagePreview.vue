@@ -118,37 +118,38 @@
       <div
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
-        <div id="image-grayscale-group" class="w-52">
-          <legend class="font-fell">Grayscale</legend>
-          <label
-            class="pr-2 font-fell cursor-pointer"
-            for="image-color-original"
-            >Original</label
-          >
-          <input
-            @input="onImageColoringChange"
-            v-model="canvasObj.imageColoring"
-            value="original"
-            style="width: 10px; height: 10px"
-            class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"
-            type="radio"
-            name="image-color"
-            id="image-color-original"
-          />
-          <label class="px-2 font-fell cursor-pointer" for="image-color-dark"
-            >Dark</label
-          >
-          <input
-            @input="onImageColoringChange"
-            v-model="canvasObj.imageColoring"
-            value="image-dark"
-            style="width: 10px; height: 10px"
-            class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"
-            type="radio"
-            name="image-color"
-            id="image-color-dark"
-          />
-        </div>
+<!--        <div id="image-grayscale-group" class="w-52">-->
+<!--          <legend class="font-fell">Grayscale</legend>-->
+<!--          <label-->
+<!--            class="pr-2 font-fell cursor-pointer"-->
+<!--            for="image-color-original"-->
+<!--            >Original</label-->
+<!--          >-->
+<!--          <input-->
+<!--            @input="onImageColoringChange"-->
+<!--            v-model="canvasObj.imageColoring"-->
+<!--            value="original"-->
+<!--            style="width: 10px; height: 10px"-->
+<!--            class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
+<!--            type="radio"-->
+<!--            name="image-color"-->
+<!--            id="image-color-original"-->
+<!--          />-->
+<!--          <label class="px-2 font-fell cursor-pointer" for="image-color-dark"-->
+<!--            >Dark</label-->
+<!--          >-->
+<!--          <input-->
+<!--            @input="onImageColoringChange"-->
+<!--            v-model="canvasObj.imageColoring"-->
+<!--            value="image-dark"-->
+<!--            style="width: 10px; height: 10px"-->
+<!--            class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
+<!--            type="radio"-->
+<!--            name="image-color"-->
+<!--            id="image-color-dark"-->
+<!--          />-->
+<!--        </div>-->
+        <image-grayscale v-model:grayscale="canvasObj.imageColoring" @input="onImageColoringChange"></image-grayscale>
         <div id="image-darkness-group" class="w-52">
           <label class="block font-fell" for="image-darkness">Darkness</label>
           <input
@@ -212,6 +213,7 @@ import TitleInput from "./TitleInput.vue";
 import FontFamily from "@/components/FontFamily";
 import TitleSize from "@/components/TitleSize";
 import TitleColor from "@/components/TitleColor";
+import ImageGrayscale from "@/components/ImageGrayscale";
 
 export default {
   name: "ImagePreview",
@@ -241,7 +243,8 @@ export default {
     TitleInput,
     FontFamily,
     TitleSize,
-    TitleColor
+    TitleColor,
+    ImageGrayscale
   },
   methods: {
     onImgSelected(e) {
@@ -272,12 +275,12 @@ export default {
       this.toCanvas(this.canvasObj);
     },
     onFontColorChange() {
-      console.log(this.canvasObj.textColor)
       // this.canvasObj.textColor = val;
       this.toCanvas(this.canvasObj);
     },
-    onImageColoringChange(e) {
-      this.canvasObj.imageColoring = e.target.value;
+    onImageColoringChange() {
+      console.log(this.canvasObj.imageColoring)
+      // this.canvasObj.imageColoring = e.target.value;
       this.toCanvas(this.canvasObj);
     },
     onImageDarknessChange(e){
@@ -355,7 +358,7 @@ export default {
         this.setImageDarkness(canvasObj);
         this.setTitle(canvasObj);
         canvasObj.ctx.drawImage(img, 0, 0);
-        if (canvasObj.imageColoring === "image-dark") {
+        if (canvasObj.imageColoring === "dark") {
           this.setGrayscale(canvasObj);
         }
       });

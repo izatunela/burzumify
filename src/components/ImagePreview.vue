@@ -82,37 +82,38 @@
 <!--          </p>-->
 <!--        </div>-->
         <title-size :titleSize="canvasObj.fontSize" @titleSizeChange="onTitleSizeChange"></title-size>
-        <div id="font-color-group" class="w-52">
-          <fieldset>
-            <legend class="font-fell">Title color</legend>
-            <label class="pr-2 font-fell cursor-pointer" for="font-color-dark"
-              >Dark</label
-            >
-            <input
-              @input="onFontColorChange"
-              v-model="canvasObj.textColor"
-              value="dark"
-              style="width: 10px; height: 10px"
-              class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"
-              type="radio"
-              name="font-color"
-              id="font-color-dark"
-            />
-            <label class="px-2 font-fell cursor-pointer" for="font-color-white"
-              >White</label
-            >
-            <input
-              @input="onFontColorChange"
-              v-model="canvasObj.textColor"
-              value="white"
-              style="width: 10px; height: 10px"
-              class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"
-              type="radio"
-              name="font-color"
-              id="font-color-white"
-            />
-          </fieldset>
-        </div>
+<!--        <div id="font-color-group" class="w-52">-->
+<!--          <fieldset>-->
+<!--            <legend class="font-fell">Title color</legend>-->
+<!--            <label class="pr-2 font-fell cursor-pointer" for="font-color-dark"-->
+<!--              >Dark</label-->
+<!--            >-->
+<!--            <input-->
+<!--              @input="onFontColorChange"-->
+<!--              v-model="canvasObj.textColor"-->
+<!--              value="dark"-->
+<!--              style="width: 10px; height: 10px"-->
+<!--              class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
+<!--              type="radio"-->
+<!--              name="font-color"-->
+<!--              id="font-color-dark"-->
+<!--            />-->
+<!--            <label class="px-2 font-fell cursor-pointer" for="font-color-white"-->
+<!--              >White</label-->
+<!--            >-->
+<!--            <input-->
+<!--              @input="onFontColorChange"-->
+<!--              v-model="canvasObj.textColor"-->
+<!--              value="white"-->
+<!--              style="width: 10px; height: 10px"-->
+<!--              class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
+<!--              type="radio"-->
+<!--              name="font-color"-->
+<!--              id="font-color-white"-->
+<!--            />-->
+<!--          </fieldset>-->
+<!--        </div>-->
+        <title-color v-model:titleColor="canvasObj.textColor" @input="onFontColorChange"></title-color>
       </div>
       <div
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
@@ -210,6 +211,7 @@
 import TitleInput from "./TitleInput.vue";
 import FontFamily from "@/components/FontFamily";
 import TitleSize from "@/components/TitleSize";
+import TitleColor from "@/components/TitleColor";
 
 export default {
   name: "ImagePreview",
@@ -238,7 +240,8 @@ export default {
   components: {
     TitleInput,
     FontFamily,
-    TitleSize
+    TitleSize,
+    TitleColor
   },
   methods: {
     onImgSelected(e) {
@@ -268,8 +271,9 @@ export default {
       this.canvasObj.fontSize = val; //TODO da li ovo moze u v-model a ostalo u jednu f
       this.toCanvas(this.canvasObj);
     },
-    onFontColorChange(e) {
-      this.canvasObj.textColor = e.target.value;
+    onFontColorChange() {
+      console.log(this.canvasObj.textColor)
+      // this.canvasObj.textColor = val;
       this.toCanvas(this.canvasObj);
     },
     onImageColoringChange(e) {

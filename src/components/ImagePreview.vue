@@ -66,21 +66,22 @@
       <div
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
-        <div id="font-size-group" class="w-52">
-          <label class="block font-fell" for="font-size">Title size</label>
-          <input
-            @input="onFontSizeChange"
-            class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
-            type="range"
-            name="font-size"
-            id="font-size"
-            min="10"
-            max="300"
-          />
-          <p class="text-center font-fell text-2xl -mt-2">
-            {{ canvasObj.fontSize }}<small>px</small>
-          </p>
-        </div>
+<!--        <div id="title-size-group" class="w-52">-->
+<!--          <label class="block font-fell" for="title-size">Title size</label>-->
+<!--          <input-->
+<!--            @input="onTitleSizeChange"-->
+<!--            class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
+<!--            type="range"-->
+<!--            name="title-size"-->
+<!--            id="title-size"-->
+<!--            min="10"-->
+<!--            max="300"-->
+<!--          />-->
+<!--          <p class="text-center font-fell text-2xl -mt-2">-->
+<!--            {{ canvasObj.fontSize }}<small>px</small>-->
+<!--          </p>-->
+<!--        </div>-->
+        <title-size :titleSize="canvasObj.fontSize" @titleSizeChange="onTitleSizeChange"></title-size>
         <div id="font-color-group" class="w-52">
           <fieldset>
             <legend class="font-fell">Title color</legend>
@@ -208,6 +209,7 @@
 <script>
 import TitleInput from "./TitleInput.vue";
 import FontFamily from "@/components/FontFamily";
+import TitleSize from "@/components/TitleSize";
 
 export default {
   name: "ImagePreview",
@@ -224,7 +226,7 @@ export default {
         imageDarkness: 100,
         title: "B U R Z U M",
         fontFamily: "Gregorian",
-        fontSize: 42,
+        fontSize: '42',
         textColor: "dark",
         imageWidth: null,
         imageHeight: null,
@@ -235,7 +237,8 @@ export default {
   },
   components: {
     TitleInput,
-    FontFamily
+    FontFamily,
+    TitleSize
   },
   methods: {
     onImgSelected(e) {
@@ -261,8 +264,8 @@ export default {
       this.canvasObj.fontFamily = e.target.selectedOptions[0].text;
       this.toCanvas(this.canvasObj);
     },
-    onFontSizeChange(e) {
-      this.canvasObj.fontSize = e.target.value;
+    onTitleSizeChange(val) {
+      this.canvasObj.fontSize = val; //TODO da li ovo moze u v-model a ostalo u jednu f
       this.toCanvas(this.canvasObj);
     },
     onFontColorChange(e) {

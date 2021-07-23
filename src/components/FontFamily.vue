@@ -2,10 +2,10 @@
   <div id="font-family-group" class="w-52">
     <label class="block font-fell" for="font-family">Font</label>
     <select
-        id="font-family"
-        class="btn-dark font-fell bg-white"
-        :value="fontfamily"
-        @change="$emit('update:fontfamily',$event.target.value)"
+      id="font-family"
+      class="btn-dark font-fell bg-white"
+      :value="fontfamily"
+      @change="$emit('update:fontfamily', $event.target.value)"
     >
       <option value="duerergotisch" class="text-4xl font-duerergotisch">
         Duerer Gotisch
@@ -32,11 +32,11 @@
 <script>
 export default {
   name: "FontFamily.vue",
-  props:{
-    'fontfamily': String
+  props: {
+    fontfamily: String
   },
-  emits:{
-    'update:fontfamily':null
+  emits: {
+    "update:fontfamily": null
   }
-}
+};
 </script>

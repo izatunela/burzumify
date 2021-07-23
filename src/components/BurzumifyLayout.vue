@@ -139,8 +139,8 @@ export default {
       const canvasWrap = document.getElementById("canvas-wrap");
       canvasWrap.append(canvas);
     },
-    refreshCanvas(){
-      this.toCanvas(this.canvasObj)
+    refreshCanvas() {
+      this.toCanvas(this.canvasObj);
     },
     setImageSize(canvasObj) {
       canvasObj.canvas.width = canvasObj.imageWidth;

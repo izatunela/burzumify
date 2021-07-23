@@ -34,11 +34,11 @@
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
         <title-size
-          v-model:titleSize="canvasObj.fontSize"
+          v-model:titleSize="canvasObj.titleSize"
           @input="refreshCanvas"
         ></title-size>
         <title-color
-          v-model:titleColor="canvasObj.textColor"
+          v-model:titleColor="canvasObj.titleColor"
           @input="refreshCanvas"
         ></title-color>
       </div>
@@ -46,12 +46,12 @@
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
         <image-grayscale
-          v-model:grayscale="canvasObj.imageColoring"
+          v-model:grayscale="canvasObj.grayscale"
           @input="refreshCanvas"
         ></image-grayscale>
 
         <image-darkness
-          v-model:darkness="canvasObj.imageDarkness"
+          v-model:darkness="canvasObj.darkness"
           @input="refreshCanvas"
         ></image-darkness>
       </div>
@@ -100,12 +100,12 @@ export default {
         canvas: null,
         ctx: null,
         image: null,
-        imageColoring: "original",
-        imageDarkness: "100",
+        grayscale: "original",
+        darkness: "100",
         title: "B U R Z U M",
         fontFamily: "gregorian",
-        fontSize: "42",
-        textColor: "dark",
+        titleSize: "42",
+        titleColor: "dark",
         imageWidth: null,
         imageHeight: null,
         xAxisPosition: "20",
@@ -147,13 +147,13 @@ export default {
       canvasObj.canvas.height = canvasObj.imageHeight;
     },
     setFont(canvasObj) {
-      canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
+      canvasObj.ctx.font = canvasObj.titleSize + "px " + canvasObj.fontFamily;
     },
     setTextColor(canvasObj) {
-      canvasObj.ctx.fillStyle = canvasObj.textColor;
+      canvasObj.ctx.fillStyle = canvasObj.titleColor;
     },
     setImageDarkness(canvasObj) {
-      canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;
+      canvasObj.ctx.filter = `brightness(${canvasObj.darkness}%)`;
     },
     setTitle(canvasObj) {
       document.fonts.ready.then(function() {
@@ -204,7 +204,7 @@ export default {
         this.setImageDarkness(canvasObj);
         this.setTitle(canvasObj);
         canvasObj.ctx.drawImage(img, 0, 0);
-        if (canvasObj.imageColoring === "dark") {
+        if (canvasObj.grayscale === "dark") {
           this.setGrayscale(canvasObj);
         }
       });

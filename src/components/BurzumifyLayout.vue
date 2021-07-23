@@ -21,183 +21,43 @@
       <div
         class="options-row sm:w-full self-center flex flex-col sm:flex-row justify-evenly"
       >
-<!--        <div id="title-group" class="w-52">-->
-<!--          <label class="block font-fell" for="title">Title</label>-->
-<!--          <input-->
-<!--            id="title"-->
-<!--            v-model="canvasObj.title"-->
-<!--            @input="inputTitle"-->
-<!--            type="text"-->
-<!--            class="font-fell p-2 btn-dark"-->
-<!--            placeholder="Enter title"-->
-<!--          />-->
-<!--        </div>-->
-        <title-input v-model:title="canvasObj.title" @input="inputTitle"></title-input>
-<!--        <div id="font-family-group" class="w-52">-->
-<!--          <label class="block font-fell" for="font-family">Font</label>-->
-<!--          <select-->
-<!--            id="font-family"-->
-<!--            class="btn-dark font-fell bg-white"-->
-<!--            @change="onFontSelected"-->
-<!--            v-model="selectedFont"-->
-<!--          >-->
-<!--            <option value="duerergotisch" class="text-4xl font-duerergotisch">-->
-<!--              Duerer Gotisch-->
-<!--            </option>-->
-<!--            <option value="gregorian" class="text-4xl font-gregorian">-->
-<!--              Gregorian-->
-<!--            </option>-->
-<!--            <option value="old-london" class="text-4xl font-old-london">-->
-<!--              Old London-->
-<!--            </option>-->
-<!--            <option value="papyrus" class="text-2xl font-papyrus">-->
-<!--              Papyrus-->
-<!--            </option>-->
-<!--            <option value="ruritania" class="text-2xl font-ruritania">-->
-<!--              Ruritania-->
-<!--            </option>-->
-<!--            <option value="times-new-roman" class="text-2xl font-times-new-roman">-->
-<!--              Times New Roman-->
-<!--            </option>-->
-<!--          </select>-->
-<!--        </div>-->
-        <font-family v-model:fontfamily="selectedFont" @change="onFontSelected"></font-family>
+        <title-input
+          v-model:title="canvasObj.title"
+          @input="inputTitle"
+        ></title-input>
+        <font-family
+          v-model:fontfamily="selectedFont"
+          @change="onFontSelected"
+        ></font-family>
       </div>
       <div
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
-<!--        <div id="title-size-group" class="w-52">-->
-<!--          <label class="block font-fell" for="title-size">Title size</label>-->
-<!--          <input-->
-<!--            @input="onTitleSizeChange"-->
-<!--            class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
-<!--            type="range"-->
-<!--            name="title-size"-->
-<!--            id="title-size"-->
-<!--            min="10"-->
-<!--            max="300"-->
-<!--          />-->
-<!--          <p class="text-center font-fell text-2xl -mt-2">-->
-<!--            {{ canvasObj.fontSize }}<small>px</small>-->
-<!--          </p>-->
-<!--        </div>-->
-        <title-size :titleSize="canvasObj.fontSize" @titleSizeChange="onTitleSizeChange"></title-size>
-<!--        <div id="font-color-group" class="w-52">-->
-<!--          <fieldset>-->
-<!--            <legend class="font-fell">Title color</legend>-->
-<!--            <label class="pr-2 font-fell cursor-pointer" for="font-color-dark"-->
-<!--              >Dark</label-->
-<!--            >-->
-<!--            <input-->
-<!--              @input="onFontColorChange"-->
-<!--              v-model="canvasObj.textColor"-->
-<!--              value="dark"-->
-<!--              style="width: 10px; height: 10px"-->
-<!--              class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
-<!--              type="radio"-->
-<!--              name="font-color"-->
-<!--              id="font-color-dark"-->
-<!--            />-->
-<!--            <label class="px-2 font-fell cursor-pointer" for="font-color-white"-->
-<!--              >White</label-->
-<!--            >-->
-<!--            <input-->
-<!--              @input="onFontColorChange"-->
-<!--              v-model="canvasObj.textColor"-->
-<!--              value="white"-->
-<!--              style="width: 10px; height: 10px"-->
-<!--              class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
-<!--              type="radio"-->
-<!--              name="font-color"-->
-<!--              id="font-color-white"-->
-<!--            />-->
-<!--          </fieldset>-->
-<!--        </div>-->
-        <title-color v-model:titleColor="canvasObj.textColor" @input="onFontColorChange"></title-color>
+        <title-size
+          :titleSize="canvasObj.fontSize"
+          @titleSizeChange="onTitleSizeChange"
+        ></title-size>
+        <title-color
+          v-model:titleColor="canvasObj.textColor"
+          @input="onFontColorChange"
+        ></title-color>
       </div>
       <div
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
-<!--        <div id="image-grayscale-group" class="w-52">-->
-<!--          <legend class="font-fell">Grayscale</legend>-->
-<!--          <label-->
-<!--            class="pr-2 font-fell cursor-pointer"-->
-<!--            for="image-color-original"-->
-<!--            >Original</label-->
-<!--          >-->
-<!--          <input-->
-<!--            @input="onImageColoringChange"-->
-<!--            v-model="canvasObj.imageColoring"-->
-<!--            value="original"-->
-<!--            style="width: 10px; height: 10px"-->
-<!--            class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
-<!--            type="radio"-->
-<!--            name="image-color"-->
-<!--            id="image-color-original"-->
-<!--          />-->
-<!--          <label class="px-2 font-fell cursor-pointer" for="image-color-dark"-->
-<!--            >Dark</label-->
-<!--          >-->
-<!--          <input-->
-<!--            @input="onImageColoringChange"-->
-<!--            v-model="canvasObj.imageColoring"-->
-<!--            value="image-dark"-->
-<!--            style="width: 10px; height: 10px"-->
-<!--            class="cursor-pointer border-black border appearance-none checked:bg-black focus:outline-none"-->
-<!--            type="radio"-->
-<!--            name="image-color"-->
-<!--            id="image-color-dark"-->
-<!--          />-->
-<!--        </div>-->
-        <image-grayscale v-model:grayscale="canvasObj.imageColoring" @input="onImageColoringChange"></image-grayscale>
-<!--        <div id="image-darkness-group" class="w-52">-->
-<!--          <label class="block font-fell" for="image-darkness">Darkness</label>-->
-<!--          <input-->
-<!--            @input="onImageDarknessChange"-->
-<!--            v-model="canvasObj.imageDarkness"-->
-<!--            class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
-<!--            type="range"-->
-<!--            name="image-darkness"-->
-<!--            id="image-darkness"-->
-<!--            min="0"-->
-<!--            max="100"-->
-<!--          />-->
-<!--          <p class="text-center font-fell text-2xl -mt-2">-->
-<!--            {{ Math.abs(canvasObj.imageDarkness - 100) }}<small>%</small>-->
-<!--          </p>-->
-<!--        </div>-->
-        <image-darkness v-model:darkness="canvasObj.imageDarkness" @input="onImageDarknessChange"></image-darkness>
+        <image-grayscale
+          v-model:grayscale="canvasObj.imageColoring"
+          @input="onImageColoringChange"
+        ></image-grayscale>
+
+        <image-darkness
+          v-model:darkness="canvasObj.imageDarkness"
+          @input="onImageDarknessChange"
+        ></image-darkness>
       </div>
       <div
-          class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
+        class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
-<!--        <div id="" class="w-52">-->
-<!--        <div class="block font-fell">Title position</div>-->
-<!--          <label class="block font-fell" for="x-title-position">X-Axis</label>-->
-<!--          <input-->
-<!--              @input="onXAxisTitlePositionChange"-->
-<!--              v-model="canvasObj.xAxisPosition"-->
-<!--              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
-<!--              type="range"-->
-<!--              name="x-title-position"-->
-<!--              id="x-title-position"-->
-<!--              min="0"-->
-<!--              :max="canvasObj.imageWidth"-->
-<!--          />-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        <div id="" class="w-52">&ndash;&gt;-->
-<!--          <label class="block font-fell" for="y-title-position">Y-Axis</label>-->
-<!--          <input-->
-<!--              @input="onYAxisTitlePositionChange"-->
-<!--              v-model="canvasObj.yAxisPosition"-->
-<!--              class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"-->
-<!--              type="range"-->
-<!--              name="y-title-position"-->
-<!--              id="y-title-position"-->
-<!--              min="0"-->
-<!--              :max="canvasObj.imageHeight"-->
-<!--          />-->
-<!--        </div>-->
         <title-position
           v-model:xPos="canvasObj.xAxisPosition"
           v-model:yPos="canvasObj.yAxisPosition"
@@ -210,7 +70,10 @@
     </div>
     <div v-show="show" id="preview-image">
       <div id="canvas-wrap" class="mx-auto p-0.5"></div>
-      <button class="block mx-auto btn-dark font-fell btn-burzumify-hover " @click="burzumify">
+      <button
+        class="block mx-auto btn-dark font-fell btn-burzumify-hover"
+        @click="burzumify"
+      >
         &#9651; Burzumify &#9661;
       </button>
     </div>
@@ -245,9 +108,9 @@ export default {
         textColor: "dark",
         imageWidth: null,
         imageHeight: null,
-        xAxisPosition:"20",
-        yAxisPosition:"20",
-      },
+        xAxisPosition: "20",
+        yAxisPosition: "20"
+      }
     };
   },
   components: {
@@ -288,54 +151,48 @@ export default {
       this.toCanvas(this.canvasObj);
     },
     onFontColorChange() {
-      // this.canvasObj.textColor = val;
       this.toCanvas(this.canvasObj);
     },
     onImageColoringChange() {
-      console.log(this.canvasObj.imageColoring)
-      // this.canvasObj.imageColoring = e.target.value;
       this.toCanvas(this.canvasObj);
     },
-    onImageDarknessChange(){
-      // this.canvasObj.imageDarkness = e.target.value;
+    onImageDarknessChange() {
       this.toCanvas(this.canvasObj);
     },
-    onXAxisTitlePositionChange(){
-      // this.canvasObj.xAxisPosition = e.target.value;
+    onXAxisTitlePositionChange() {
       this.toCanvas(this.canvasObj);
     },
-    onYAxisTitlePositionChange(){
-      // this.canvasObj.yAxisPosition = e.target.value;
+    onYAxisTitlePositionChange() {
       this.toCanvas(this.canvasObj);
     },
-    setImageSize(canvasObj){
+    setImageSize(canvasObj) {
       canvasObj.canvas.width = canvasObj.imageWidth;
       canvasObj.canvas.height = canvasObj.imageHeight;
     },
-    setFont(canvasObj){
+    setFont(canvasObj) {
       canvasObj.ctx.font = canvasObj.fontSize + "px " + canvasObj.fontFamily;
     },
-    setTextColor(canvasObj){
+    setTextColor(canvasObj) {
       canvasObj.ctx.fillStyle = canvasObj.textColor;
     },
-    setImageDarkness(canvasObj){
+    setImageDarkness(canvasObj) {
       canvasObj.ctx.filter = `brightness(${canvasObj.imageDarkness}%)`;
     },
-    setTitle(canvasObj){
-      document.fonts.ready.then(function () {
+    setTitle(canvasObj) {
+      document.fonts.ready.then(function() {
         canvasObj.ctx.fillText(
-            canvasObj.title,
-            canvasObj.xAxisPosition,
-            canvasObj.yAxisPosition
+          canvasObj.title,
+          canvasObj.xAxisPosition,
+          canvasObj.yAxisPosition
         );
       });
     },
-    setGrayscale(canvasObj){
+    setGrayscale(canvasObj) {
       const imageData = canvasObj.ctx.getImageData(
-          0,
-          0,
-          canvasObj.canvas.width,
-          canvasObj.canvas.height
+        0,
+        0,
+        canvasObj.canvas.width,
+        canvasObj.canvas.height
       );
       const data = imageData.data;
       for (var i = 0; i < data.length; i += 4) {
@@ -345,27 +202,26 @@ export default {
         data[i + 2] = avg;
       }
       canvasObj.ctx.putImageData(imageData, 0, 0);
-
     },
     addImageProcess(src) {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         let img = new Image();
         img.src = src;
         img.onload = () => {
           resolve(img);
-          URL.revokeObjectURL(this.src)
-        }
+          URL.revokeObjectURL(this.src);
+        };
       });
     },
     toCanvas(canvasObj) {
       var img = new Image();
       img.crossOrigin = "anonymous";
 
-      this.addImageProcess(canvasObj.image).then((img) => {
-        this.canvasObj.imageWidth = img.width
-        this.canvasObj.imageHeight = img.height
+      this.addImageProcess(canvasObj.image).then(img => {
+        this.canvasObj.imageWidth = img.width;
+        this.canvasObj.imageHeight = img.height;
         this.setImageSize(canvasObj);
-        canvasObj.ctx.textBaseline = "top";//TODO vidi da li ovo moze negde da se skloni
+        canvasObj.ctx.textBaseline = "top"; //TODO vidi da li ovo moze negde da se skloni
         this.setFont(canvasObj);
         this.setTextColor(canvasObj);
         this.setImageDarkness(canvasObj);
@@ -384,7 +240,7 @@ export default {
       a.href = this.canvasObj.canvas.toDataURL();
       a.download = this.imgName;
       a.click();
-    },
-  },
+    }
+  }
 };
 </script>

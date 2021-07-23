@@ -26,7 +26,7 @@
           @input="inputTitle"
         ></title-input>
         <font-family
-          v-model:fontfamily="selectedFont"
+          v-model:fontfamily="canvasObj.fontFamily"
           @change="onFontSelected"
         ></font-family>
       </div>
@@ -34,8 +34,8 @@
         class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
       >
         <title-size
-          :titleSize="canvasObj.fontSize"
-          @titleSizeChange="onTitleSizeChange"
+          v-model:titleSize="canvasObj.fontSize"
+          @input="onTitleSizeChange"
         ></title-size>
         <title-color
           v-model:titleColor="canvasObj.textColor"
@@ -103,7 +103,7 @@ export default {
         imageColoring: "original",
         imageDarkness: "100",
         title: "B U R Z U M",
-        fontFamily: "Gregorian",
+        fontFamily: "gregorian",
         fontSize: "42",
         textColor: "dark",
         imageWidth: null,
@@ -142,12 +142,10 @@ export default {
     inputTitle() {
       this.toCanvas(this.canvasObj);
     },
-    onFontSelected(e) {
-      this.canvasObj.fontFamily = e.target.selectedOptions[0].text;
+    onFontSelected() {
       this.toCanvas(this.canvasObj);
     },
-    onTitleSizeChange(val) {
-      this.canvasObj.fontSize = val; //TODO da li ovo moze u v-model a ostalo u jednu f
+    onTitleSizeChange() {
       this.toCanvas(this.canvasObj);
     },
     onFontColorChange() {
@@ -195,8 +193,8 @@ export default {
         canvasObj.canvas.height
       );
       const data = imageData.data;
-      for (var i = 0; i < data.length; i += 4) {
-        var avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+      for (let i = 0; i < data.length; i += 4) {
+        let avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
         data[i] = avg;
         data[i + 1] = avg;
         data[i + 2] = avg;
@@ -214,7 +212,7 @@ export default {
       });
     },
     toCanvas(canvasObj) {
-      var img = new Image();
+      let img = new Image();
       img.crossOrigin = "anonymous";
 
       this.addImageProcess(canvasObj.image).then(img => {
@@ -233,10 +231,10 @@ export default {
       });
     },
     burzumify() {
-      var finalImg = new Image();
+      let finalImg = new Image();
       finalImg.crossOrigin = "anonymous";
       finalImg.src = this.canvasObj.canvas.toDataURL();
-      var a = document.createElement("a");
+      let a = document.createElement("a");
       a.href = this.canvasObj.canvas.toDataURL();
       a.download = this.imgName;
       a.click();

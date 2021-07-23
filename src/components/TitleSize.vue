@@ -2,7 +2,7 @@
   <div id="title-size-group" class="w-52">
     <label class="block font-fell" for="title-size">Title size</label>
     <input
-        @input="$emit('title-size-change',$event.target.value)"
+        @input="$emit('update:titleSize',$event.target.value)"
         :value="titleSize"
         class="cursor-pointer w-52 p-0 border-0 appearance-none my-0 focus:outline-none"
         type="range"

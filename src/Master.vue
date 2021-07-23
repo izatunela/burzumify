@@ -5,7 +5,7 @@
     </div>
     <div class="w-full sm:w-1/2 xl:w-1/3 mx-auto relative z-30 bg-white">
       <top-panel class="" :title="title"></top-panel>
-      <image-preview></image-preview>
+      <burzumify-layout></burzumify-layout>
       <div class="opacity-50 bg-white w-full text-center py-6">
         <p class="font-fell ">Conjured by Marko</p>
       </div>
@@ -18,7 +18,7 @@
 
 <script>
 import TopPanel from './components/TopPanel.vue'
-import ImagePreview from './components/ImagePreview.vue'
+import BurzumifyLayout from './components/BurzumifyLayout.vue'
 
 export default {
   name: 'Master',
@@ -29,7 +29,7 @@ export default {
   },
   components: {
     TopPanel,
-    ImagePreview
+    BurzumifyLayout
   },
   methods: {
 

@@ -15,11 +15,6 @@
 <script>
 export default {
   name: "TitleInput",
-  data(){
-    return{
-      // title:null
-    }
-  },
   props:{
     title: String
   },

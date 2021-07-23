@@ -22,6 +22,9 @@ export default {
   name: "ImageDarkness",
   props:{
     darkness: String
+  },
+  emits:{
+    'update:darkness':null
   }
 }
 </script>

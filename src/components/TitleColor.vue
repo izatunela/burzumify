@@ -37,6 +37,9 @@ export default {
   name: "TitleColor",
   props:{
     titleColor: String
+  },
+  emits:{
+    'update:titleColor':null
   }
 }
 </script>

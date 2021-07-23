@@ -37,6 +37,9 @@ export default {
   name: "ImageGrayscale",
   props:{
     grayscale: String
+  },
+  emits:{
+    'update:grayscale':null
   }
 }
 </script>

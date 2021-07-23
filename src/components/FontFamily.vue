@@ -6,7 +6,6 @@
         class="btn-dark font-fell bg-white"
         :value="fontfamily"
         @change="$emit('update:fontfamily',$event.target.value)"
-
     >
       <option value="duerergotisch" class="text-4xl font-duerergotisch">
         Duerer Gotisch

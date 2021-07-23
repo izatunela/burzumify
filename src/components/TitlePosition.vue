@@ -12,8 +12,6 @@
         min="0"
         :max=imgWidth
     />
-    <!--        </div>-->
-    <!--        <div id="" class="w-52">-->
     <label class="block font-fell" for="y-title-position">Y-Axis</label>
     <input
         @input="$emit('update:yPos',$event.target.value)"
@@ -36,6 +34,10 @@ export default {
     yPos: String,
     imgWidth: Number,
     imgHeight: Number
+  },
+  emits:{
+    'update:xPos':null,
+    'update:yPos':null
   }
 }
 </script>

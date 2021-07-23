@@ -22,6 +22,9 @@ export default {
   name: "TitleSize",
   props:{
     'titleSize': String
+  },
+  emits:{
+    'update:titleSize':null
   }
 }
 </script>

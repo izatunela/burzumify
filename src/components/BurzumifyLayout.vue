@@ -23,11 +23,11 @@
       >
         <title-input
           v-model:title="canvasObj.title"
-          @input="inputTitle"
+          @input="refreshCanvas"
         ></title-input>
         <font-family
           v-model:fontfamily="canvasObj.fontFamily"
-          @change="onFontSelected"
+          @change="refreshCanvas"
         ></font-family>
       </div>
       <div
@@ -35,11 +35,11 @@
       >
         <title-size
           v-model:titleSize="canvasObj.fontSize"
-          @input="onTitleSizeChange"
+          @input="refreshCanvas"
         ></title-size>
         <title-color
           v-model:titleColor="canvasObj.textColor"
-          @input="onFontColorChange"
+          @input="refreshCanvas"
         ></title-color>
       </div>
       <div
@@ -47,12 +47,12 @@
       >
         <image-grayscale
           v-model:grayscale="canvasObj.imageColoring"
-          @input="onImageColoringChange"
+          @input="refreshCanvas"
         ></image-grayscale>
 
         <image-darkness
           v-model:darkness="canvasObj.imageDarkness"
-          @input="onImageDarknessChange"
+          @input="refreshCanvas"
         ></image-darkness>
       </div>
       <div
@@ -63,8 +63,8 @@
           v-model:yPos="canvasObj.yAxisPosition"
           v-model:imgWidth="canvasObj.imageWidth"
           v-model:imgHeight="canvasObj.imageHeight"
-          @update:xPos="onXAxisTitlePositionChange"
-          @update:yPos="onYAxisTitlePositionChange"
+          @update:xPos="refreshCanvas"
+          @update:yPos="refreshCanvas"
         ></title-position>
       </div>
     </div>
@@ -139,29 +139,8 @@ export default {
       const canvasWrap = document.getElementById("canvas-wrap");
       canvasWrap.append(canvas);
     },
-    inputTitle() {
-      this.toCanvas(this.canvasObj);
-    },
-    onFontSelected() {
-      this.toCanvas(this.canvasObj);
-    },
-    onTitleSizeChange() {
-      this.toCanvas(this.canvasObj);
-    },
-    onFontColorChange() {
-      this.toCanvas(this.canvasObj);
-    },
-    onImageColoringChange() {
-      this.toCanvas(this.canvasObj);
-    },
-    onImageDarknessChange() {
-      this.toCanvas(this.canvasObj);
-    },
-    onXAxisTitlePositionChange() {
-      this.toCanvas(this.canvasObj);
-    },
-    onYAxisTitlePositionChange() {
-      this.toCanvas(this.canvasObj);
+    refreshCanvas(){
+      this.toCanvas(this.canvasObj)
     },
     setImageSize(canvasObj) {
       canvasObj.canvas.width = canvasObj.imageWidth;

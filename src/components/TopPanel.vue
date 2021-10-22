@@ -6,9 +6,6 @@
       </h1>
       <span class="font-fell font-bold font-mono text-4xl">IFY</span>
     </div>
-    <!-- <div id="fb-shr" class="absolute z-10 right-0 p-0.5 opacity-80">
-      <img src="../assets/img/fbb.png" width="30" alt="">
-    </div> -->
     <img src="../assets/img/burzum.jpg" alt="" />
   </div>
 </template>

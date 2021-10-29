@@ -36,13 +36,13 @@
         <title-input
             v-model:title="canvasObj.title"
             @input="refreshCanvas"
-        ></title-input>
+        />
 <!--/TITLE INPUT-->
 <!--FONT FAMILY-->
         <font-family
             v-model:fontfamily="canvasObj.fontFamily"
             @change="refreshCanvas"
-        ></font-family>
+        />
 <!--/FONT FAMILY-->
       </div>
       <div
@@ -52,13 +52,13 @@
         <title-size
             v-model:titleSize="canvasObj.titleSize"
             @input="refreshCanvas"
-        ></title-size>
+        />
 <!--/TITLE SIZE-->
 <!--TITLE COLOR-->
         <title-color
             v-model:titleColor="canvasObj.titleColor"
             @input="refreshCanvas"
-        ></title-color>
+        />
 <!--/TITLE COLOR-->
       </div>
       <div
@@ -68,14 +68,14 @@
         <image-grayscale
             v-model:grayscale="canvasObj.grayscale"
             @input="refreshCanvas"
-        ></image-grayscale>
+        />
 <!--/IMAGE GRAYSCALE-->
 
 <!--IMAGE DARKNESS-->
         <image-darkness
             v-model:darkness="canvasObj.darkness"
             @input="refreshCanvas"
-        ></image-darkness>
+        />
 <!--/IMAGE DARKNESS-->
       </div>
       <div
@@ -89,7 +89,7 @@
             v-model:imgHeight="canvasObj.imageHeight"
             @update:xPos="refreshCanvas"
             @update:yPos="refreshCanvas"
-        ></title-position>
+        />
 <!--/TITLE POSITION-->
       </div>
     </div>

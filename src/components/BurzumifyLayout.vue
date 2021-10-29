@@ -1,5 +1,6 @@
 <template>
   <div class="relative flex flex-col items-center justify-center bg-white">
+<!--UPLOAD IMAGE-->
     <input
       type="file"
       class="hidden text-center mx-auto"
@@ -13,61 +14,7 @@
       <span v-show="!show">Choose image</span>
       <span v-show="show">Choose new image</span>
     </button>
-    <div
-      v-show="show"
-      id="options"
-      class="py-4 flex flex-wrap justify-center flex-col sm:flex-row"
-    >
-      <div
-        class="options-row sm:w-full self-center flex flex-col sm:flex-row justify-evenly"
-      >
-        <title-input
-          v-model:title="canvasObj.title"
-          @input="refreshCanvas"
-        ></title-input>
-        <font-family
-          v-model:fontfamily="canvasObj.fontFamily"
-          @change="refreshCanvas"
-        ></font-family>
-      </div>
-      <div
-        class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
-      >
-        <title-size
-          v-model:titleSize="canvasObj.titleSize"
-          @input="refreshCanvas"
-        ></title-size>
-        <title-color
-          v-model:titleColor="canvasObj.titleColor"
-          @input="refreshCanvas"
-        ></title-color>
-      </div>
-      <div
-        class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
-      >
-        <image-grayscale
-          v-model:grayscale="canvasObj.grayscale"
-          @input="refreshCanvas"
-        ></image-grayscale>
-
-        <image-darkness
-          v-model:darkness="canvasObj.darkness"
-          @input="refreshCanvas"
-        ></image-darkness>
-      </div>
-      <div
-        class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
-      >
-        <title-position
-          v-model:xPos="canvasObj.xAxisPosition"
-          v-model:yPos="canvasObj.yAxisPosition"
-          v-model:imgWidth="canvasObj.imageWidth"
-          v-model:imgHeight="canvasObj.imageHeight"
-          @update:xPos="refreshCanvas"
-          @update:yPos="refreshCanvas"
-        ></title-position>
-      </div>
-    </div>
+<!--/UPLOAD IMAGE-->
     <div v-show="show" id="preview-image">
       <div id="canvas-wrap" class="mx-auto p-0.5"></div>
       <button
@@ -76,6 +23,75 @@
       >
         &#9651; Burzumify &#9661;
       </button>
+    </div>
+    <div
+        v-show="show"
+        id="options"
+        class="py-4 flex flex-wrap justify-center flex-col sm:flex-row"
+    >
+      <div
+          class="options-row sm:w-full self-center flex flex-col sm:flex-row justify-evenly"
+      >
+<!--TITLE INPUT-->
+        <title-input
+            v-model:title="canvasObj.title"
+            @input="refreshCanvas"
+        ></title-input>
+<!--/TITLE INPUT-->
+<!--FONT FAMILY-->
+        <font-family
+            v-model:fontfamily="canvasObj.fontFamily"
+            @change="refreshCanvas"
+        ></font-family>
+<!--/FONT FAMILY-->
+      </div>
+      <div
+          class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
+      >
+<!--TITLE SIZE-->
+        <title-size
+            v-model:titleSize="canvasObj.titleSize"
+            @input="refreshCanvas"
+        ></title-size>
+<!--/TITLE SIZE-->
+<!--TITLE COLOR-->
+        <title-color
+            v-model:titleColor="canvasObj.titleColor"
+            @input="refreshCanvas"
+        ></title-color>
+<!--/TITLE COLOR-->
+      </div>
+      <div
+          class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
+      >
+<!--IMAGE GRAYSCALE-->
+        <image-grayscale
+            v-model:grayscale="canvasObj.grayscale"
+            @input="refreshCanvas"
+        ></image-grayscale>
+<!--/IMAGE GRAYSCALE-->
+
+<!--IMAGE DARKNESS-->
+        <image-darkness
+            v-model:darkness="canvasObj.darkness"
+            @input="refreshCanvas"
+        ></image-darkness>
+<!--/IMAGE DARKNESS-->
+      </div>
+      <div
+          class="options-row sm:w-full flex flex-col sm:flex-row justify-evenly"
+      >
+<!--TITLE POSITION-->
+        <title-position
+            v-model:xPos="canvasObj.xAxisPosition"
+            v-model:yPos="canvasObj.yAxisPosition"
+            v-model:imgWidth="canvasObj.imageWidth"
+            v-model:imgHeight="canvasObj.imageHeight"
+            @update:xPos="refreshCanvas"
+            @update:yPos="refreshCanvas"
+        ></title-position>
+<!--/TITLE POSITION-->
+      </div>
     </div>
   </div>
 </template>
